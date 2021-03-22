@@ -26,7 +26,7 @@ class CleaningServiceTest {
     void cleanAll() {
         int result = service.cleanAll();
         assertEquals(244_400, result);
-        assertEquals(4, service.getCleanables().size());
+        assertEquals(0, service.getCleanables().size());
     }
 
     @Test

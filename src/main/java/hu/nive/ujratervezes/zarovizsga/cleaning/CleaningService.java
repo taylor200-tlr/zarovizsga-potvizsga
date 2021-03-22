@@ -12,16 +12,17 @@ public class CleaningService {
 
     public int cleanAll() {
         int result = 0;
-        for (Cleanable actual : cleanables){
-            result += actual.clean();
+        for (int i = 0; i < cleanables.size(); i++) {
+            result += cleanables.get(i).clean();
         }
+        cleanables.clear();
         return result;
     }
 
     public int cleanOnlyOffices() {
         int result = 0;
-        for (Cleanable actual : cleanables){
-            if (actual instanceof Office){
+        for (Cleanable actual : cleanables) {
+            if (actual instanceof Office) {
                 result += actual.clean();
             }
         }
@@ -29,9 +30,9 @@ public class CleaningService {
     }
 
     public List<Cleanable> findByAddressPart(String s) {
-        List<Cleanable>result = new ArrayList<>();
-        for (Cleanable actual : cleanables){
-            if (actual.getAddress().contains(s)){
+        List<Cleanable> result = new ArrayList<>();
+        for (Cleanable actual : cleanables) {
+            if (actual.getAddress().contains(s)) {
                 result.add(actual);
             }
         }
@@ -42,7 +43,7 @@ public class CleaningService {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < cleanables.size(); i++) {
             stringBuilder.append(cleanables.get(i).getAddress());
-            if (i < cleanables.size()-1){
+            if (i < cleanables.size() - 1) {
                 stringBuilder.append(", ");
             }
 
