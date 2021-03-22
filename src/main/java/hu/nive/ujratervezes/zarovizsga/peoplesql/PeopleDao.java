@@ -35,11 +35,11 @@ public class PeopleDao {
 
     private String getIpAddress(PreparedStatement stmt) {
         String result = "";
-        try(ResultSet resultSet = stmt.executeQuery()){
-            if (resultSet.next()){
+        try (ResultSet resultSet = stmt.executeQuery()) {
+            if (resultSet.next()) {
                 result = resultSet.getString("ip_address");
             }
-        }catch (SQLException sqe){
+        } catch (SQLException sqe) {
             throw new IllegalStateException("Can not found any IP", sqe);
         }
         return result;
