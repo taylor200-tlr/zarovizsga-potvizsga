@@ -17,6 +17,7 @@ public class PeopleDao {
     }
 
     public String findIpByName(String firstName, String lastName) {
+        String result;
         try (
                 Connection conn = dataSource.getConnection();
                 PreparedStatement stmt =
@@ -24,12 +25,23 @@ public class PeopleDao {
         ) {
             stmt.setString(1, firstName);
             stmt.setString(2, lastName);
-            ResultSet resultSet = stmt.executeQuery();
-            String result = resultSet.getString("ip_address");
-            return result;
+            result = getIpAddress(stmt);
 
         } catch (SQLException sqle) {
             throw new IllegalArgumentException("Error by insert", sqle);
         }
+        return result;
+    }
+
+    private String getIpAddress(PreparedStatement stmt) {
+        String result = "";
+        try(ResultSet resultSet = stmt.executeQuery()){
+            if (resultSet.next()){
+                result = resultSet.getString("ip_address");
+            }
+        }catch (SQLException sqe){
+            throw new IllegalStateException("Can not found any IP", sqe);
+        }
+        return result;
     }
 }
