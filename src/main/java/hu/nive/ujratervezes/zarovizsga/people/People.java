@@ -13,7 +13,7 @@ public class People {
         int femaleCounter = 0;
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             while ((line = reader.readLine()) != null) {
-                if (line.contains("Male")) {
+                if (line.contains(",Male,")) {
                     maleCounter ++;
                 }else if (line.contains("Female")){
                     femaleCounter ++;

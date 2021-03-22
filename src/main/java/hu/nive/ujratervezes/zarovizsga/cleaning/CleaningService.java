@@ -21,9 +21,10 @@ public class CleaningService {
 
     public int cleanOnlyOffices() {
         int result = 0;
-        for (Cleanable actual : cleanables) {
-            if (actual instanceof Office) {
-                result += actual.clean();
+        for (int i = 0; i < cleanables.size(); i++) {
+            if (cleanables.get(i) instanceof Office) {
+                result += cleanables.get(i).clean();
+                cleanables.remove(i);
             }
         }
         return result;
