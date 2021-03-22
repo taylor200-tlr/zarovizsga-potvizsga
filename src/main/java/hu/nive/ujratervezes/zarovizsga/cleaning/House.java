@@ -1,6 +1,6 @@
 package hu.nive.ujratervezes.zarovizsga.cleaning;
 
-public class House implements Cleanable{
+public class House implements Cleanable {
     private String address;
     private int area;
     private final int PRICE = 80;
@@ -12,11 +12,19 @@ public class House implements Cleanable{
 
     @Override
     public int clean() {
-        return area*PRICE;
+        return area * PRICE;
     }
 
     @Override
     public String getAddress() {
         return address;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "address='" + address + '\'' +
+                ", area=" + area +
+                '}';
     }
 }

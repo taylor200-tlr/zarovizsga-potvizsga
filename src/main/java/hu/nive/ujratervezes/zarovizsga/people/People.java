@@ -14,9 +14,9 @@ public class People {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             while ((line = reader.readLine()) != null) {
                 if (line.contains(",Male,")) {
-                    maleCounter ++;
-                }else if (line.contains("Female")){
-                    femaleCounter ++;
+                    maleCounter++;
+                } else if (line.contains("Female")) {
+                    femaleCounter++;
                 }
             }
         } catch (IOException ioe) {

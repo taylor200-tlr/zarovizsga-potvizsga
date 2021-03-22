@@ -21,12 +21,14 @@ public class CleaningService {
 
     public int cleanOnlyOffices() {
         int result = 0;
+        List<Cleanable> cleaned = new ArrayList<>();
         for (int i = 0; i < cleanables.size(); i++) {
             if (cleanables.get(i) instanceof Office) {
                 result += cleanables.get(i).clean();
-                cleanables.remove(i);
+                cleaned.add(cleanables.get(i));
             }
         }
+        cleanables.removeAll(cleaned);
         return result;
     }
 

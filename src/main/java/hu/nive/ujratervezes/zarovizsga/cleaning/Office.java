@@ -1,6 +1,6 @@
 package hu.nive.ujratervezes.zarovizsga.cleaning;
 
-public class Office implements Cleanable{
+public class Office implements Cleanable {
     private String address;
     private int area;
     private int level;
@@ -14,11 +14,20 @@ public class Office implements Cleanable{
 
     @Override
     public int clean() {
-        return area*level*PRICE;
+        return area * level * PRICE;
     }
 
     @Override
     public String getAddress() {
         return address;
+    }
+
+    @Override
+    public String toString() {
+        return "Office{" +
+                "address='" + address + '\'' +
+                ", area=" + area +
+                ", level=" + level +
+                '}';
     }
 }
